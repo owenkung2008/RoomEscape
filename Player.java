@@ -37,7 +37,7 @@ public abstract class Player extends WalkingActor implements HasHealth
     
    
     //health and damges
-    //Maximum health the player can have. */
+    //Maximum health the player can have
     protected int maxHealth = GameConfig.DEFAULT_MAX_HP;
     protected int health = maxHealth;
     
@@ -122,13 +122,13 @@ public abstract class Player extends WalkingActor implements HasHealth
 
     /**
      * Called exactly once during the attack animation at hitFrame.
-     * Subclass defines the attack logic (melee hitbox, projectile, etc.)
+     * Subclass defines the attack logic
      */
     protected abstract void onAttackHit();
 
     public void act()
     {
-        //Freeze while paused 
+        //freeze while paused 
         if (GameWorld.isPaused()) return;
         
         //reduce invincibility timer each frame
