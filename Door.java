@@ -3,7 +3,7 @@ import greenfoot.*;
 /**
  * Door moves the player to a neighboring room when unlocked and touched.
  *
- * The movement direction is stored as (dr, dc). Example:
+ * The movement direction is stored as (dr, dc).
  * UP = (-1, 0)
  * DOWN = (1, 0)
  * LEFT = (0, -1)
@@ -20,7 +20,7 @@ public class Door extends Actor
 
     private boolean unlocked = false;
 
-    //UPDATE: door images (must be inside the images folder)
+    //door images
     private static final String IMG_LOCKED   = "door_locked.png";
     private static final String IMG_UNLOCKED = "door_unlocked.png";
 
@@ -85,19 +85,27 @@ public class Door extends Actor
 
         if (dc != 0) 
         {
-            //LEFT/RIGHT door: vertical strip on border
+            //vertical strip on border
             w = GameConfig.BORDER_THICK;
             h = GameConfig.DOOR_GAP_H;
         } 
         else 
         {
-            //UP/DOWN door: horizontal strip on border
+            //horizontal strip on border
             w = GameConfig.DOOR_GAP_W;
             h = GameConfig.BORDER_THICK;
         }
 
         //try to load image
-        String path = unlocked ? IMG_UNLOCKED : IMG_LOCKED;
+        String path = null;
+        if(unlocked)
+        {
+            path= IMG_UNLOCKED;
+        }
+        else
+        {
+            path= IMG_LOCKED;
+        }
 
         try 
         {
@@ -115,9 +123,6 @@ public class Door extends Actor
             img.setColor(Color.BLACK);
             img.drawRect(0, 0, w - 1, h - 1);
     
-            //label (small)
-            //img.drawString(unlocked ? "GO" : "LOCK", 2, Math.min(12, h - 2));
-
             setImage(img);
         }
 
@@ -131,7 +136,6 @@ public class Door extends Actor
         if (!unlocked) return;
 
         if (isTouching(Player.class))
-        //if(isPixelTouching(Player.class))
         {
             GameWorld w = (GameWorld) getWorld();
             w.tryMove(dr, dc);

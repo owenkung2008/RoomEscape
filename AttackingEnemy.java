@@ -6,10 +6,8 @@ import greenfoot.*;
  * - trigger an attack effect exactly once at a chosen animation frame (hitFrame)
  *
  * Subclasses must implement:
- * - wantsToAttack(): when AI decides to start attacking
- * - onAttackHit(): what happens at hitFrame (melee damage / shoot bullet / etc.)
- *
- * Movement is still controlled by Enemy.computeMove() in subclasses.
+ * - wantsToAttack(): 
+ * - onAttackHit(): 
  */
 public abstract class AttackingEnemy extends Enemy
 {
@@ -23,10 +21,10 @@ public abstract class AttackingEnemy extends Enemy
     //true while playing attack animation
     protected boolean attacking = false;
 
-    //Attack animation speed control (ticks)/
+    //attack animation speed control
     protected int atkAnimTick = 0;
 
-    //how many act() calls per attack frame. Smaller = faster
+    //smaller, faster animation
     protected int atkAnimDelay = 2;
 
     //current attack frame index (0-based)
@@ -35,7 +33,7 @@ public abstract class AttackingEnemy extends Enemy
     //frame index where the hit/effect happens (0-based)
     protected int hitFrame = 4;
 
-    /** Ensures onAttackHit() runs only once per attack. */
+    //Ensures onAttackHit() runs only once per attack
     protected boolean hitDone = false;
 
     //attack cool down
@@ -45,7 +43,7 @@ public abstract class AttackingEnemy extends Enemy
     //cooldown applied after an attack finishes
     protected int attackCooldownMax = 80;
 
-    //2–5 seconds in frames (assuming ~60 acts/sec)
+    //frames for attackinterval
     protected int attackIntervalMin = 120; 
     protected int attackIntervalMax = 300; 
 
@@ -60,9 +58,6 @@ public abstract class AttackingEnemy extends Enemy
 
     /**
      * Loads directional attack frames from a folder prefix:
-     *   folder + "/up1..N.png"
-     *   folder + "/down1..N.png"
-     *   folder + "/right1..N.png"
      * Left is auto-mirrored from right.
      *
      * Example: loadAttackFrames("enemy/skeleton/attack", 6);
@@ -76,8 +71,7 @@ public abstract class AttackingEnemy extends Enemy
     }
 
     /**
-     * Picks the next random time until we can start another attack.
-     * Range: [attackIntervalMin, attackIntervalMax] inclusive.
+     * Picks the next random time until next attack.
      */
     protected void scheduleNextAttack()
     {
@@ -88,14 +82,13 @@ public abstract class AttackingEnemy extends Enemy
         attackTimer = min + Greenfoot.getRandomNumber(span);
     }
 
-    //AI rule: should we start an attack now? */
+    //should start an attack now?
     protected abstract boolean wantsToAttack();
 
     //attack effect at hitFrame
     protected abstract void onAttackHit();
 
     /**
-     * Overridden act():
      * - If attacking: play attack animation only
      * - Else: do normal Enemy movement/animation, then maybe start attack
      */
@@ -104,7 +97,7 @@ public abstract class AttackingEnemy extends Enemy
         if (GameWorld.isPaused()) return;
         if (getWorld() == null) return;
 
-        // if player is gone, do nothing
+        //if player is gone, do nothing
         if (target == null || target.getWorld() == null) return;
 
         //contact cooldown in Enemy
@@ -126,7 +119,7 @@ public abstract class AttackingEnemy extends Enemy
 
         regularMovement();
 
-        //rouch-damage
+        //touch-damage
         handlePlayerContact();
 
         //start attack if ready
@@ -176,7 +169,7 @@ public abstract class AttackingEnemy extends Enemy
             return;
         }
 
-        // Trigger attack effect ONCE at hitFrame
+        //trigger attack effect ONCE at hitFrame
         int safeHit = Math.min(hitFrame, frames.length - 1);
         if (!hitDone && atkFrameIndex == safeHit)
         {
@@ -208,7 +201,7 @@ public abstract class AttackingEnemy extends Enemy
         setImage(frames[atkFrameIndex]);
     }
 
-    //Returns attack frames array matching current direction
+    //returns attack frames array matching current direction
     protected GreenfootImage[] attackFramesFor(int direction)
     {
         if (direction == UP) return atkUp;

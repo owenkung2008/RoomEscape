@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=CombatActor
+comment0.text=\n\ CombatActor\ adds\ reusable\ directional\ one-shot\ attack\ animation\ logic.\n\n\ Used\ by\:\n\ -\ Player\ (warriors)\n\ -\ AttackingEnemy\ (enemies\ that\ attack)\n\n\ It\ does\ NOT\ decide\ *when*\ to\ attack.\ Subclasses\ decide\ when\ to\ call\ startAttack().\n
+comment1.params=folder\ frameCount
+comment1.target=void\ loadAttackFrames(java.lang.String,\ int)
+comment1.text=\n\ Loads\ directional\ attack\ frames\ from\:\n\ \ \ images/<folder>/up1.png\ ...\n\ \ \ images/<folder>/down1.png\ ...\n\ \ \ images/<folder>/right1.png\ ...\n\n\ LEFT\ is\ auto-created\ by\ mirroring\ the\ right\ frames.\n\n\ @param\ folder\ \ \ \ \ the\ folder\ prefix\ in\ images\n\ @param\ frameCount\ number\ of\ attack\ frames\ for\ each\ direction\n
+comment2.params=direction
+comment2.target=greenfoot.GreenfootImage[]\ attackFramesFor(int)
+comment2.text=\n\ Select\ correct\ attack\ frames\ based\ on\ direction.\n
+comment3.params=
+comment3.target=void\ startAttack()
+comment3.text=\n\ Start\ the\ attack\ animation\ from\ frame\ 0.\n\ Subclasses\ usually\ call\ this\ after\ deciding\ an\ attack\ should\ begin.\n
+comment4.params=
+comment4.target=void\ doAttackAnim()
+comment4.text=\n\ Plays\ attack\ animation\ as\ a\ one-shot,\ triggers\ onAttackHit()\ once.\n\ Call\ this\ while\ (attacking\ \=\=\ true).\n
+comment5.params=
+comment5.target=void\ onAttackHit()
+comment5.text=\n\ Called\ exactly\ once\ during\ the\ attack\ animation\ at\ hitFrame.\n\ Default\ is\ no-op;\ Player\ /\ AttackingEnemy\ can\ make\ it\ abstract.\n
+numComments=6

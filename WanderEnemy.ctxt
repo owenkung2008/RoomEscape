@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=WanderEnemy
+comment0.text=\n\ WanderEnemy\ walks\ in\ random\ directions\ and\ changes\ direction\ randomly.\n
+comment1.params=target
+comment1.target=WanderEnemy(Player)
+comment2.params=
+comment2.target=int[]\ computeMove()
+comment2.text=\n\ Computes\ wandering\ movement\ using\ WanderBrain.\n
+numComments=3

@@ -1,23 +1,23 @@
 #BlueJ class context
 comment0.target=AttackingEnemy
-comment0.text=\n\ AttackingEnemy\ is\ an\ Enemy\ that\ can\:\n\ -\ play\ a\ one-shot\ directional\ attack\ animation\ (up/down/left/right)\n\ -\ trigger\ an\ attack\ effect\ exactly\ once\ at\ a\ chosen\ animation\ frame\ (hitFrame)\n\n\ Subclasses\ must\ implement\:\n\ -\ wantsToAttack()\:\ when\ AI\ decides\ to\ start\ attacking\n\ -\ onAttackHit()\:\ what\ happens\ at\ hitFrame\ (melee\ damage\ /\ shoot\ bullet\ /\ etc.)\n\n\ Movement\ is\ still\ controlled\ by\ Enemy.computeMove()\ in\ subclasses.\n
+comment0.text=\n\ AttackingEnemy\ is\ an\ Enemy\ that\ can\:\n\ -\ play\ a\ one-shot\ directional\ attack\ animation\ (up/down/left/right)\n\ -\ trigger\ an\ attack\ effect\ exactly\ once\ at\ a\ chosen\ animation\ frame\ (hitFrame)\n\n\ Subclasses\ must\ implement\:\n\ -\ wantsToAttack()\:\ \n\ -\ onAttackHit()\:\ \n
 comment1.params=target
 comment1.target=AttackingEnemy(Player)
 comment10.params=
 comment10.target=void\ faceTarget4Dir()
 comment2.params=folder\ frameCount
 comment2.target=void\ loadAttackFrames(java.lang.String,\ int)
-comment2.text=\n\ Loads\ directional\ attack\ frames\ from\ a\ folder\ prefix\:\n\ \ \ folder\ +\ "/up1..N.png"\n\ \ \ folder\ +\ "/down1..N.png"\n\ \ \ folder\ +\ "/right1..N.png"\n\ Left\ is\ auto-mirrored\ from\ right.\n\n\ Example\:\ loadAttackFrames("enemy/skeleton/attack",\ 6);\n
+comment2.text=\n\ Loads\ directional\ attack\ frames\ from\ a\ folder\ prefix\:\n\ Left\ is\ auto-mirrored\ from\ right.\n\n\ Example\:\ loadAttackFrames("enemy/skeleton/attack",\ 6);\n
 comment3.params=
 comment3.target=void\ scheduleNextAttack()
-comment3.text=\n\ Picks\ the\ next\ random\ time\ until\ we\ can\ start\ another\ attack.\n\ Range\:\ [attackIntervalMin,\ attackIntervalMax]\ inclusive.\n
+comment3.text=\n\ Picks\ the\ next\ random\ time\ until\ next\ attack.\n
 comment4.params=
 comment4.target=boolean\ wantsToAttack()
 comment5.params=
 comment5.target=void\ onAttackHit()
 comment6.params=
 comment6.target=void\ act()
-comment6.text=\n\ Overridden\ act()\:\n\ -\ If\ attacking\:\ play\ attack\ animation\ only\n\ -\ Else\:\ do\ normal\ Enemy\ movement/animation,\ then\ maybe\ start\ attack\n
+comment6.text=\n\ -\ If\ attacking\:\ play\ attack\ animation\ only\n\ -\ Else\:\ do\ normal\ Enemy\ movement/animation,\ then\ maybe\ start\ attack\n
 comment7.params=
 comment7.target=void\ startAttack()
 comment7.text=\n\ Starts\ a\ new\ attack\:\n\ -\ face\ player\n\ -\ reset\ attack\ animation\ indexes\n

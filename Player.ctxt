@@ -1,42 +1,30 @@
 #BlueJ class context
 comment0.target=Player
-comment0.text=\n\ Warrior\ is\ a\ player-style\ character\ that\ can\:\n\ -\ walk\ using\ WalkingActor's\ movement/facing/walk\ animation\n\ -\ play\ a\ directional\ attack\ animation\n\ -\ trigger\ a\ "hit"\ once\ at\ a\ chosen\ frame\n\n\ How\ to\ use\:\n\ Subclass\ constructor,\ call\:\n\ \ \ \ \ \ loadDirectionalFrames();\n\ \ \ \ \ \ loadAttackFrames();\n\ \ Subclass\ implement\ wantsToAttack()\n\ \ Subclassmplement\ onAttackHit()\ (spawn\ weapon\ hitbox)\n
-comment1.params=folder\ frameCount
-comment1.target=void\ loadAttackFrames(java.lang.String,\ int)
-comment1.text=\n\ Loads\ directional\ attack\ frames\ from\:\n\ \ \ images/<folder>/attack/up1.png\ ...\n\ \ \ images/<folder>/attack/down1.png\ ...\n\ \ \ images/<folder>/attack/right1.png\ ...\n\n\ LEFT\ is\ auto-created\ by\ mirroring\ the\ right\ frames.\n\n\ @param\ folder\ \ \ \ \ the\ base\ folder\ in\ images\n\ @param\ frameCount\ number\ of\ attack\ frames\ for\ each\ direction\n
-comment10.params=
-comment10.target=int\ getMaxHealth()
-comment10.text=\n\ @return\ the\ player's\ maximum\ health.\n
-comment11.params=amount
-comment11.target=void\ heal(int)
-comment11.text=\n\ Heals\ the\ player\ by\ a\ given\ amount\n\ without\ exceeding\ maxHealth.\n\n\ @param\ amount\ how\ much\ to\ heal\ (ignored\ if\ <\=\ 0)\n
-comment12.params=amount
-comment12.target=void\ setHealth(int)
-comment12.text=\n\ setHealth\ of\ the\ player\ when\ resume\ the\ game\n
-comment13.params=amount
-comment13.target=void\ takeDamage(int)
-comment13.text=\n\ Damages\ the\ player\ by\ a\ given\ amount.\n\ Uses\ invincibility\ frames\ (hurtCooldown)\ to\ prevent\ rapid\ repeat\ damage.\n\ If\ health\ reaches\ 0,\ the\ player\ dies\ and\ the\ game\ stops.\n\n\ @param\ amount\ how\ much\ damage\ to\ take\ (ignored\ if\ <\=\ 0)\n
+comment0.text=\n\ Warrior\n\ -\ walk\ using\ WalkingActor's\ movement/facing/walk\ animation\n\ -\ play\ a\ directional\ attack\ animation\n\ -\ trigger\ a\ "hit"\ once\ at\ a\ chosen\ frame\n\n\ Subclass\ constructor,\ call\:\n\ \ \ \ \ \ loadDirectionalFrames();\n\ \ \ \ \ \ loadAttackFrames();\n\ \ Subclass\ implement\ wantsToAttack()\n\ \ Subclass\ implement\ onAttackHit()\n
+comment1.params=
+comment1.target=int[]\ computeMove()
+comment1.text=\n\ Subclass\ can\ override\n\ \n\ Parant\ class\ provides\ default\ movement\n\n\ @return\ int[]{dx,\ dy}\n
 comment2.params=
-comment2.target=int[]\ computeMove()
-comment2.text=\n\ Subclass\ can\ override\n\ \n\ Parant\ class\ provides\ default\ movement\n\n\ @return\ int[]{dx,\ dy}\n
+comment2.target=boolean\ wantsToAttack()
+comment2.text=\n\ Subclass\ decides\ when\ to\ start\ an\ attack.\n\n\ @return\ true\ if\ attack\ should\ begin\ this\ frame\n
 comment3.params=
-comment3.target=boolean\ wantsToAttack()
-comment3.text=\n\ Subclass\ decides\ when\ to\ start\ an\ attack.\n\n\ @return\ true\ if\ attack\ should\ begin\ this\ frame\n
+comment3.target=void\ onAttackHit()
+comment3.text=\n\ Called\ exactly\ once\ during\ the\ attack\ animation\ at\ hitFrame.\n\ Subclass\ defines\ the\ attack\ logic\ (melee\ hitbox,\ projectile,\ etc.)\n
 comment4.params=
-comment4.target=void\ onAttackHit()
-comment4.text=\n\ Called\ exactly\ once\ during\ the\ attack\ animation\ at\ hitFrame.\n\ Subclass\ defines\ the\ attack\ logic\ (melee\ hitbox,\ projectile,\ etc.)\n
+comment4.target=void\ act()
 comment5.params=
-comment5.target=void\ act()
+comment5.target=int\ getHealth()
+comment5.text=\n\ @return\ the\ player's\ current\ health\n
 comment6.params=
-comment6.target=void\ startAttack()
-comment6.text=\n\ Start\ the\ attack\ animation\ from\ frame\ 0.\n
-comment7.params=
-comment7.target=void\ doAttackAnim()
-comment7.text=\n\ Plays\ attack\ animation\ as\ a\ one-shot,\ triggers\ onAttackHit()\ once.\n
-comment8.params=direction
-comment8.target=greenfoot.GreenfootImage[]\ attackFramesFor(int)
-comment8.text=\n\ Select\ correct\ attack\ frames\ based\ on\ direction.\n
-comment9.params=
-comment9.target=int\ getHealth()
-comment9.text=\n\ @return\ the\ player's\ current\ health\n
-numComments=14
+comment6.target=int\ getMaxHealth()
+comment6.text=\n\ @return\ the\ player's\ maximum\ health.\n
+comment7.params=amount
+comment7.target=void\ heal(int)
+comment7.text=\n\ Heals\ the\ player\ by\ a\ given\ amount\n\ without\ exceeding\ maxHealth.\n\n\ @param\ amount\ how\ much\ to\ heal\ (ignored\ if\ <\=\ 0)\n
+comment8.params=amount
+comment8.target=void\ setHealth(int)
+comment8.text=\n\ setHealth\ of\ the\ player\ when\ resume\ the\ game\n
+comment9.params=amount
+comment9.target=void\ takeDamage(int)
+comment9.text=\n\ Damages\ the\ player\ by\ a\ given\ amount.\n\ Uses\ invincibility\ frames\ (hurtCooldown)\ to\ prevent\ rapid\ repeat\ damage.\n\ If\ health\ reaches\ 0,\ the\ player\ dies\ and\ the\ game\ stops.\n\n\ @param\ amount\ how\ much\ damage\ to\ take\ (ignored\ if\ <\=\ 0)\n
+numComments=10

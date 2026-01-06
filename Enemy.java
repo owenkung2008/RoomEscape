@@ -11,7 +11,7 @@ import greenfoot.*;
  * left1.png left2.png
  * right1.png right2.png
  */
-public abstract class Enemy extends WalkingActor implements HasHealth
+public abstract class Enemy extends CombatActor implements HasHealth
 {
 
     //The player this enemy can interact with 
@@ -52,7 +52,7 @@ public abstract class Enemy extends WalkingActor implements HasHealth
         spriteW=60;
         spriteH=65;
         
-
+        //default
         loadDirectionalFrames("enemy", 2);
         dir = DOWN;
         //initial facing down
@@ -66,6 +66,8 @@ public abstract class Enemy extends WalkingActor implements HasHealth
      */
     protected void addedToWorld(World world)
     {
+        nudgeOffBlockers();  //preventing sticking to blocker forever
+        
         if (hpBar == null)
         {
             //HealthBar(HasHealth unit, Actor follow, int width, int height, boolean followTarget, int yOffset)
@@ -180,7 +182,7 @@ public abstract class Enemy extends WalkingActor implements HasHealth
         }
     }
 
-    /*/Damages/knocks the player on contact (cooldown-based). */
+    //Damages/knocks the player on contact
     protected void handlePlayerContact() 
     {
         if (target == null) 
@@ -196,39 +198,8 @@ public abstract class Enemy extends WalkingActor implements HasHealth
             {
                 target.takeDamage(contactDamage);     
             }
-            //distance from enemy -> player
-            //int dx = target.getX() - getX();
-            //int dy = target.getY() - getY();
-
-            //double dist = Math.sqrt(dx * dx + dy * dy);
-            //if (dist < 0.0001) dist = 1;
-
-            //so that player and enemy does not stick
-            //int kx = (int) Math.round((dx / dist) * knockBack);
-            //int ky = (int) Math.round((dy / dist) * knockBack);
-
-            //knockBack not working very wel yet
-            //knockBackPlayer(kx, ky);
         }
     }
-
-    //knockback helper
-    //not working very well yet
-    protected void knockBackPlayer(int kx, int ky) 
-    {
-        int oldX = target.getX();
-        int oldY = target.getY();
-
-        //x push
-        target.setLocation(oldX + kx, oldY);
-        //if (target.isTouching(Blocker.class)) target.setLocation(oldX, oldY);
-
-        //y push
-        int midX = target.getX();
-        target.setLocation(midX, oldY + ky);
-        // if (target.isTouching(Wall.class)) target.setLocation(midX, oldY);
-    }
-    
     //@return enemy current HP
     public int getHealth() 
     { 
@@ -257,5 +228,46 @@ public abstract class Enemy extends WalkingActor implements HasHealth
         {
             getWorld().removeObject(this);
         }
+    }
+    /**
+     * If spawn touching a Blocker (wall/statue)
+     * moveto the nearest non-colliding spot it does't get "stuck" forever.
+     */
+    private void nudgeOffBlockers()
+    {
+        if (getWorld() == null) return;
+
+        // If not touching anything solid, we're fine.
+        if (getOneIntersectingObject(Blocker.class) == null) return;
+
+        int startX = getX();
+        int startY = getY();
+
+        // Search outward in a small spiral/grid
+        int step = 6;          // pixels per attempt
+        int maxRadius = 12;    // how far we search (12*6 = 72px)
+
+        for (int r = 1; r <= maxRadius; r++)
+        {
+            for (int dx = -r; dx <= r; dx++)
+            {
+                for (int dy = -r; dy <= r; dy++)
+                {
+                    // Only check the perimeter of this "ring" (faster)
+                    if (Math.abs(dx) != r && Math.abs(dy) != r) continue;
+
+                    setLocation(startX + dx * step, startY + dy * step);
+
+                    if (getOneIntersectingObject(Blocker.class) == null)
+                    {
+                        return;
+                    }  
+                }
+            }
+        }
+
+        //failed to find a spot
+        //put it back
+        setLocation(startX, startY);
     }
 }

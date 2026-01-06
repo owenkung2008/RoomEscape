@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * DoorBlocker is a Wall collider that is ALWAYS invisible.
+ * DoorBlocker is a Wall collider that is always invisible.
  *
  */
 public class DoorBlocker extends Blocker
@@ -16,7 +16,7 @@ public class DoorBlocker extends Blocker
     {
         super(w, h);
         
-        VISIBLE=false;
+        VISIBLE=false; 
         GreenfootImage img = new GreenfootImage(w, h);       
         if(VISIBLE)
         {

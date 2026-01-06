@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=WarriorSelectIcon
+comment0.text=\n\ WarriorSelectIcon\ is\ a\ clickable\ image\ used\ on\ the\ setup\ screen.\n\n\ -\ Shows\ a\ warrior\ picture\ (png)\n\ -\ When\ clicked,\ it\ tells\ SetupWorld\ which\ warrior\ type\ was\ chosen\n\ -\ If\ selected,\ it\ draws\ a\ highlight\ border\n
+comment1.params=imgPath\ warriorType
+comment1.target=WarriorSelectIcon(java.lang.String,\ int)
+comment1.text=\n\ @param\ imgPath\ path\ inside\ images\ folder\n\ @param\ warriorType\ the\ selection\ code\ (GameConfig.WARRIOR_AXE)\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=sel
+comment3.target=void\ setSelected(boolean)
+comment3.text=\n\ Set\ whether\ this\ icon\ is\ currently\ selected.\n\ If\ selected,\ draw\ a\ border\ to\ show\ it.\n
+comment4.params=
+comment4.target=void\ redraw()
+comment4.text=\n\ Rebuilds\ the\ displayed\ image\ with\ or\ without\ highlight.\n
+numComments=5

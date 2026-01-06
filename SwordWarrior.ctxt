@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=SwordWarrior
+comment0.text=\n\ \ Sword\ Warrior\:\n\ -\ Walks\ using\ WalkingActor\ movement\ (WASD\ /\ arrow\ keys)\n\ -\ Attacks\ with\ SPACE\ using\ directional\ attack\ sprites\n\ -\ Melee\ hit\ is\ an\ invisible\ hitbox\ (AxeSlash)\ spawned\ in\ front\n
+comment1.params=
+comment1.target=SwordWarrior()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=boolean\ wantsToAttack()
+comment3.text=\n\ Start\ attack\ when\ SPACE\ is\ pressed.\n
+comment4.params=
+comment4.target=void\ onAttackHit()
+comment4.text=\n\ Spawn\ a\ short-lived\ hitbox\ in\ front\ of\ the\ player\ on\ the\ hit\ frame.\n\ This\ matches\ an\ axe\ swing\ in\ front\ like\ your\ sprite.\n
+numComments=5

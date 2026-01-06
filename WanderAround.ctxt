@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=WanderAround
+comment0.text=\n\ WanderAround\ generates\ simple\ random\ wandering\ movement\:\n\ -\ Pick\ a\ random\ direction\ (up/down/left/right)\n\ -\ Keep\ moving\ that\ direction\ for\ a\ random\ time\n\ -\ Then\ pick\ again\n\n
+comment1.params=minHoldFrames\ extraHoldFrames
+comment1.target=WanderAround(int,\ int)
+comment1.text=\n\ @param\ minHoldFrames\ \ minimum\ frames\ to\ keep\ a\ direction\n\ @param\ extraHoldFrames\ additional\ random\ frames\ (0..extraHoldFrames-1)\n
+comment2.params=
+comment2.target=WanderAround()
+comment2.text=Default\ tuning\ (similar\ to\ your\ WanderEnemy\ feel).
+comment3.params=speed
+comment3.target=int[]\ nextMove(int)
+comment3.text=\n\ @param\ speed\ movement\ speed\n\ @return\ int[]{dx,\ dy}\ movement\ for\ this\ frame\n
+comment4.params=
+comment4.target=void\ pickNewDirection()
+comment4.text=\n\ Chooses\ a\ new\ random\ direction\ and\ a\ random\ duration\ to\ walk.\n
+numComments=5

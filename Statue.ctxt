@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Statue
+comment0.text=\n\ A\ Statue\ is\ a\ solid\ blocker\ that\ \n\ also\ shows\ a\ larger\ decorative\ image\ on\ top.\n\n\ The\ Statue\ itself\ uses\ an\ invisible,\ tile-sized\ image\ for\ collision.\n\ \n\ A\ separate\ Decoration\ actor\ ("visual")\ is\ added\ to\ the\ world\ \n\ to\ display\ the\ actual\ statue\ sprite\ (often\ bigger\ than\ a\ tile)\n\ aligned\ so\ the\ bottom\ of\ the\ sprite\ sits\ on\ the\ tile.\n
+comment1.params=w\ h
+comment1.target=Statue(int,\ int)
+comment1.text=\n\ Creates\ a\ statue\ with\ a\ collision\ hitbox\ of\ size\ (w,\ h).\n\ The\ statue's\ own\ image\ is\ made\ transparent\ so\ it\ blocks\ movement\n\ without\ visibly\ covering\ the\ decoration\ sprite.\n\n\ @param\ w\ hitbox\ width\ (usually\ tile\ width)\n\ @param\ h\ hitbox\ height\ (usually\ tile\ height)\n
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\n\ after\ the\ hitbox\ ix\ created\n\ spawns\ the\ visible\ statue\ decoration\ \n\ and\ positions\ it\ so\ its\ bottom\ lines\ up\ with\ this\ tile.\n\n\ @param\ world\ the\ world\ this\ actor\ was\ added\ to\n
+comment3.params=world
+comment3.target=void\ removedFromWorld(greenfoot.World)
+comment3.text=\n\ when\ the\ hitbox\ is\ removed\n\ removes\ the\ visible\ decoration\ too\n\ so\ it\ doesn't\ get\ left\ behind.\n\n\ @param\ world\ the\ world\ this\ actor\ was\ removed\ from\n
+numComments=4
