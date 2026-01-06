@@ -29,9 +29,9 @@ public class StartButton extends Actor
     /**
      * allows SetupWorld to disable the Resume button if there is no save.
      */
-    public void setEnabled(boolean e)
+    public void setEnabled(boolean enabled)
     {
-        enabled = e;
+        this.enabled = enabled;
 
         //transparent when disabled
         if (getImage() != null)

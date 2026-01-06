@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SaveManager
-comment0.text=\n\ SaveManager\ reads/writes\ simple\ save\ data\ to\ a\ text\ file.\n\n\ Saved\ data\ \n\ -\ roomR,\ roomC\n\ -\ visited\ grid\n\ -\ cleared\ grid\n\ -\ lastRoomR,lastRoomC\n\n\ File\ format\ example\:\n\ roomR\=1\n\ roomC\=2\n\ visited\=1101/0111/0101/1111\n\ cleared\=1000/0100/0000/0000\n\ playerHealt\=5\n
+comment0.text=\n\ SaveManager\ reads/writes\ simple\ save\ data\ to\ a\ text\ file.\n\n\ Saved\ data\ \n\ -\ roomR,\ roomC\n\ -\ visited\ grid\n\ -\ cleared\ grid\n\ -\ lastRoomR,lastRoomC\n\n\ File\ format\ example\:\n\ roomR\=1\n\ roomC\=2\n\ visited\=1101/0111/0101/1111\n\ cleared\=1000/0100/0000/0000\n\ playerHealt\=5\n\ roomsCleared\=2\n
 comment1.params=
 comment1.target=boolean\ hasSave()
 comment1.text=\n\ @return\ true\ if\ a\ save\ file\ exists\n

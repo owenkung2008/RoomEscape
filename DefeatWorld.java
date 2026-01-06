@@ -19,7 +19,7 @@ public class DefeatWorld extends World
         //show ext
         showText("GAME OVER", getWidth()/2, getHeight()/2 - 40);
         showText("Press R to Restart", getWidth()/2, getHeight()/2 + 10);
-        showText("Press M for Menu", getWidth()/2, getHeight()/2 + 40);
+        showText("Press S to go to Setting", getWidth()/2, getHeight()/2 + 40);
     }
 
     public void act()
@@ -31,7 +31,7 @@ public class DefeatWorld extends World
         }
 
         //menu: go back to your settings page
-        if (Greenfoot.isKeyDown("m"))
+        if (Greenfoot.isKeyDown("s"))
         {
             //return to setting
             Greenfoot.setWorld(new SettingWorld());

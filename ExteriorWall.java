@@ -8,7 +8,7 @@ import greenfoot.*;
  */
 public class ExteriorWall extends Blocker
 {
-    private static final String EXTERIOR_WALL_SPRITE = "exterior_wall.png"; // images/exterior_wall.png
+    private static final String EXTERIOR_WALL_SPRITE = "exterior_wall.png"; 
 
     /**
      * Creates an exterior wall collider with width and height in pixels.
@@ -24,7 +24,6 @@ public class ExteriorWall extends Blocker
             VISIBLE=false;
             if (VISIBLE) 
             {
-                //Try to use PNG sprite first
                 try 
                 {
                     GreenfootImage tex = new GreenfootImage(EXTERIOR_WALL_SPRITE);
@@ -34,7 +33,7 @@ public class ExteriorWall extends Blocker
                 } 
                 catch (IllegalArgumentException e) 
                 {
-                    //If sprite missing,, use drawn out rectangle
+                    //sprite missing,, draw out a rectangle
                     img.setColor(new Color(0, 200, 255, 120));
                     img.fill();
                     img.setColor(Color.BLUE);
@@ -45,9 +44,10 @@ public class ExteriorWall extends Blocker
             } 
             else 
             {
-                //Fully transparent, but still has size for collisions
-                img.setColor(new Color(0, 0, 0, 0));
-                img.fill();
+                //transparent
+                //but still has size for collisions
+                img.setColor(new Color(0, 0, 0, 0)); 
+                img.fill();  //img size=w,h
                 setImage(img);
             }
     }

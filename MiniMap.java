@@ -59,17 +59,16 @@ public class MiniMap extends Actor
         
 
         //create a fresh image every time 
-        //so the minimap always matches the latest state
         GreenfootImage img = new GreenfootImage(width, height);
         //draw the background panel 
-        //(black with transparnecy = 120, so it's transparent)
+        //black with transparnecy = 120
         img.setColor(new Color(0, 0, 0, 120));
         img.fill();
 
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
 
-                //Convert grid position (r,c)
+                //convert grid position (r,c)
                 //into (x,y) on the minimap image
                 int x = PAD + c * (CELL + PAD);
                 int y = PAD + r * (CELL + PAD);
@@ -94,7 +93,7 @@ public class MiniMap extends Actor
                 } else 
                 {
                     //light gray
-                    //room was visited but not cleared yet (player has been here before)
+                    //room was visited but not cleared yet
                     img.setColor(new Color(220, 220, 220));
                 }
                 img.fillRect(x, y, CELL, CELL);

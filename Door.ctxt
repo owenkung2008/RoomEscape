@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Door
-comment0.text=\n\ Door\ moves\ the\ player\ to\ a\ neighboring\ room\ when\ unlocked\ and\ touched.\n\n\ The\ movement\ direction\ is\ stored\ as\ (dr,\ dc).\ Example\:\n\ UP\ \=\ (-1,\ 0)\n\ DOWN\ \=\ (1,\ 0)\n\ LEFT\ \=\ (0,\ -1)\n\ RIGHT\ \=\ (0,\ 1)\n
+comment0.text=\n\ Door\ moves\ the\ player\ to\ a\ neighboring\ room\ when\ unlocked\ and\ touched.\n\n\ The\ movement\ direction\ is\ stored\ as\ (dr,\ dc).\n\ UP\ \=\ (-1,\ 0)\n\ DOWN\ \=\ (1,\ 0)\n\ LEFT\ \=\ (0,\ -1)\n\ RIGHT\ \=\ (0,\ 1)\n
 comment1.params=name\ dr\ dc
 comment1.target=Door(java.lang.String,\ int,\ int)
 comment1.text=\n\ Creates\ a\ Door\ with\ a\ label\ and\ a\ direction.\n\n\ @param\ name\ label\ text\n\ @param\ dr\ row\ change\n\ @param\ dc\ col\ change\n

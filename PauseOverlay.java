@@ -3,8 +3,6 @@ import greenfoot.*;
 /**
  * PauseOverlay displays a pause message on top of the game.
  *
- * It does not handle input.
- * GameWorld handles ESC / Q key logic
  */
 public class PauseOverlay extends Actor
 {

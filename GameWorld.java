@@ -96,6 +96,8 @@ public class GameWorld extends World
         roomR = start[0];
         roomC = start[1];
     
+        //whatever new data saved
+        //must also update this section
         if (resume)
         {
             SaveData data = SaveManager.load(map);
@@ -117,6 +119,7 @@ public class GameWorld extends World
                 }
             }
             
+            roomsClearedCount=data.roomsCleared;
             player.setHealth(data.playerHealth);
         }
 
@@ -172,6 +175,7 @@ public class GameWorld extends World
         data.cleared = SaveManager.encodeCleared(map);
     
         data.playerHealth=player.getHealth();
+        data.roomsCleared=roomsClearedCount;
         
         SaveManager.save(data);
     
@@ -224,6 +228,7 @@ public class GameWorld extends World
         showText("Room: (" + roomR + "," + roomC + ")", hudX, 30);
         showText("Enemies: " + countEnemies(), hudX, 50);
         showText("Rooms cleared: " + roomsClearedCount + " / " + GameConfig.WIN_ROOMS, hudX, 70);
+        showText("Heath Remaind: " + player.getHealth(), hudX, 650);
 
         //Win check
         //show in the window of the room
@@ -503,5 +508,16 @@ public class GameWorld extends World
     public boolean isCleared(int r, int c)
     {
         return map.isCleared(r, c);
+    }
+    /**
+     * Allows actors (like Boss) to access the current room's RoomData.
+     */
+    public RoomData getCurrentRoomData()
+    {
+        return map.getRoomData(roomR, roomC);
+    }
+    public int getRoomsClearedCount()
+    {
+        return roomsClearedCount;
     }
 }

@@ -11,6 +11,8 @@ public class SaveData
 
     public int lastRoomR;
     public int lastRoomC;
+    
+    public int roomsCleared;
 
     //These are encoded strings so we don't store big arrays here
     public String visited;

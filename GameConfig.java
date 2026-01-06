@@ -1,10 +1,10 @@
 
 
 /**
- * GameConfig stores the shared constants for the game.
+ * GameConfig stores the shared constants for the game
+ * The static methods were originally from the GameWorld and moved here
+ * work as helper methods for multiple classes the were originally in game world
  * 
- * This is the "one place" where sizes and tile codes live.
- * GameWorld and all systems read from here.
  */
 public class GameConfig 
 {
@@ -79,34 +79,45 @@ public class GameConfig
     public static final int DEFAULT_MAX_HP = 50;
     public static final int DEFAULT_INVINCIBILITY_FRAMES = 30;
     
-
+    //SummonerBoss
+    public static final int SUMMONER_BOSS_DOOR_CLEARED=1;
+    
+    //file for reloading data later
     public static final String SAVE_FILE = "save.txt";
-    //<<<Tile Related Helper Methods>>>>>
-    /** Left pixel of tile column tc (inside the room). */
+    
+    /**
+     * @return  left pixel of tile column tc
+     */
     public static int tileLeft(int tc) 
     {
         return GameConfig.ROOM_X + (int)Math.round(tc * (GameConfig.ROOM_W / (double)GameConfig.MAP_COLS));
     }
 
-    /** Right pixel of tile column tc (inside the room). */
+    /**
+     * @return  right pixel of tile column tc
+     */
     public static int tileRight(int tc) 
     {
         return GameConfig.ROOM_X + (int)Math.round((tc + 1) * (GameConfig.ROOM_W / (double)GameConfig.MAP_COLS));
     }
-
-    /** Top pixel of tile row tr (inside the room). */
+    /**
+     * @return  top pixel of tile row tr
+     */
     public static int tileTop(int tr) 
     {
         return GameConfig.ROOM_Y + (int)Math.round(tr * (GameConfig.ROOM_H / (double)GameConfig.MAP_ROWS));
     }
 
-    /** Bottom pixel of tile row tr (inside the room). */
+    /**
+     * @return  Bottom pixel of tile row tr (inside the room)
+     */
     public static int tileBottom(int tr) 
     {
         return GameConfig.ROOM_Y + (int)Math.round((tr + 1) * (GameConfig.ROOM_H / (double)GameConfig.MAP_ROWS));
     }
-
-    /**Center X pixel of tile column tc. */
+    /**
+     * @return  Center X pixel of tile column tc
+     */
     public static int tileCenterX(int tc) 
     {
         int x1 = tileLeft(tc);
@@ -114,14 +125,15 @@ public class GameConfig
         return x1 + (x2 - x1) / 2;
     }
 
-    /** Center Y pixel of tile row tr. */
+     /**
+     * @return  Center Y pixel of tile row tr
+     */
     public static int tileCenterY(int tr) 
     {
         int y1 = tileTop(tr);
         int y2 = tileBottom(tr);
         return y1 + (y2 - y1) / 2;
     }
-    //<<<Room Related Helper Methods>>>>>
     /**
      * @return center X of the room in world pixels
      */

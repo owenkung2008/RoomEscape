@@ -52,7 +52,10 @@ public class Coin extends Actor
         }
 
         World world = getWorld();
-        if (world != null) world.removeObject(this);
+        if (world != null) 
+        {
+            world.removeObject(this);   
+        }
     }
     private GreenfootImage loadCoinImage() 
     {
@@ -61,7 +64,8 @@ public class Coin extends Actor
             GreenfootImage img = new GreenfootImage(COIN_SPRITE);
             img.scale(30, 30);
             return img;
-        } catch (IllegalArgumentException e) 
+        } 
+        catch (IllegalArgumentException e) 
         {
             //use drawing instead
             GreenfootImage img = new GreenfootImage(30, 30);

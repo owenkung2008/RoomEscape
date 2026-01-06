@@ -58,7 +58,7 @@ public class SettingWorld extends World
         updateHighlights();
     }
     /**
-     * Starts a brand new game (delete save).
+     * Starts a brand new game.
      */
     public void startNewGame()
     {
@@ -67,7 +67,7 @@ public class SettingWorld extends World
     }
 
     /**
-     * Resumes a saved game (load save).
+     * Resumes a saved game
      */
     public void resumeGame()
     {

@@ -16,6 +16,7 @@ import java.util.Scanner;
  * visited=1101/0111/0101/1111
  * cleared=1000/0100/0000/0000
  * playerHealt=5
+ * roomsCleared=2
  */
 public class SaveManager
 {
@@ -25,8 +26,18 @@ public class SaveManager
      */
     public static boolean hasSave()
     {
-        File f = new File(GameConfig.SAVE_FILE);
-        return f.exists() && f.length() > 0;
+        //simple check
+        //no exception to catch
+        //because has not tried to read files.
+        File file = new File(GameConfig.SAVE_FILE);
+        
+        //check to see if file exists
+        //and file size >0
+        if(file.exists() && file.length()>0)
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -62,6 +73,7 @@ public class SaveManager
             out.println("visited=" + (data.visited == null ? "" : data.visited));
             out.println("cleared=" + (data.cleared == null ? "" : data.cleared));
             out.println("playerHealth=" + data.playerHealth);
+            out.println("roomsCleared=" + data.roomsCleared);
     
             out.close();
         }
@@ -128,6 +140,10 @@ public class SaveManager
                 {
                     data.playerHealth=parseIntSafe(line.substring("playerHealth=".length()), 0);
                 }
+                else if (line.startsWith("roomsCleared="))
+                {
+                    data.roomsCleared=parseIntSafe(line.substring("roomsCleared=".length()), 0);
+                }
             }
         }
         catch (Exception e)
@@ -152,8 +168,6 @@ public class SaveManager
     
         return data;
     }
-    // ---------------- private helpers ----------------
-
     /**
      * Encodes visited state into a string like 1101/0111/...
      */

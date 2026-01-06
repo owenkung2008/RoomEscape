@@ -1,41 +1,19 @@
 import greenfoot.*;
 
 /**
- * Warrior is a player-style character that can:
+ * Warrior
  * - walk using WalkingActor's movement/facing/walk animation
  * - play a directional attack animation
  * - trigger a "hit" once at a chosen frame
  *
- * How to use:
  * Subclass constructor, call:
  *      loadDirectionalFrames();
  *      loadAttackFrames();
  *  Subclass implement wantsToAttack()
- *  Subclassmplement onAttackHit() (spawn weapon hitbox)
+ *  Subclass implement onAttackHit()
  */
-public abstract class Player extends WalkingActor implements HasHealth
+public abstract class Player extends CombatActor implements HasHealth
 {
-    //attack frames (directional)
-    protected GreenfootImage[] atkUp;
-    protected GreenfootImage[] atkDown;
-    protected GreenfootImage[] atkLeft;
-    protected GreenfootImage[] atkRight;
-
-    //attack state and animation timing
-    protected boolean attacking = false;
-    protected int atkAnimDelay = 2;
-    protected int atkAnimTick = 0;
-    protected int atkFrameIndex = 0;
-
-    //cooldown (frames)
-    protected int attackCooldownMax = 12;
-    protected int attackCooldown = 0;
-
-    //which frame triggers the hit (0-based)
-    protected int hitFrame = 2;
-    protected boolean hitDone = false;
-    
-   
     //health and damges
     //Maximum health the player can have. */
     protected int maxHealth = GameConfig.DEFAULT_MAX_HP;
@@ -43,32 +21,10 @@ public abstract class Player extends WalkingActor implements HasHealth
     
     
     //While > 0, 
-    //the player cannot take damage again (prevents losing HP every frame).
+    //the player cannot take damage again
     protected int hurtCooldown = 0;
-     //How many frames after being hurt, before another damage can count 
+     //how many frames before another damage can count 
     protected int hurtCooldownFrames = GameConfig.DEFAULT_INVINCIBILITY_FRAMES;
-
- 
-    /**
-     * Loads directional attack frames from:
-     *   images/<folder>/attack/up1.png ...
-     *   images/<folder>/attack/down1.png ...
-     *   images/<folder>/attack/right1.png ...
-     *
-     * LEFT is auto-created by mirroring the right frames.
-     *
-     * @param folder     the base folder in images
-     * @param frameCount number of attack frames for each direction
-     */
-    protected void loadAttackFrames(String folder, int frameCount)
-    {
-        atkUp    = loadFramesRequired(folder + "/up", frameCount);
-        atkDown  = loadFramesRequired(folder + "/down", frameCount);
-        atkRight = loadFramesRequired(folder + "/right", frameCount);
-    
-        //left mirror from right
-        atkLeft  = mirrorImage(atkRight);
-    }
 
     /**
      * Subclass can override
@@ -154,12 +110,24 @@ public abstract class Player extends WalkingActor implements HasHealth
 
         boolean moving = (dx != 0 || dy != 0);
 
-        //update facing direction (same logic as before)
+        //update facing direction
         int newDir = dir;
-        if (dx < 0) newDir = LEFT;
-        else if (dx > 0) newDir = RIGHT;
-        else if (dy < 0) newDir = UP;
-        else if (dy > 0) newDir = DOWN;
+        if (dx < 0) 
+        {
+            newDir = LEFT;   
+        }
+        else if (dx > 0)
+        {
+            newDir = RIGHT;   
+        }
+        else if (dy < 0)
+        {
+            newDir = UP;   
+        }
+        else if (dy > 0) 
+        {
+            newDir = DOWN;   
+        }
 
         if (newDir != dir)
         {
@@ -186,80 +154,6 @@ public abstract class Player extends WalkingActor implements HasHealth
         }
     }
 
-    /**
-     * Start the attack animation from frame 0.
-     */
-    protected void startAttack()
-    {
-        attacking = true;
-        atkAnimTick = 0;
-        atkFrameIndex = 0;
-        hitDone = false;
-
-        GreenfootImage[] frames = attackFramesFor(dir);
-        if (frames != null && frames.length > 0)
-        {
-            setImage(frames[0]);
-        }
-    }
-
-    /**
-     * Plays attack animation as a one-shot, triggers onAttackHit() once.
-     */
-    protected void doAttackAnim()
-    {
-        GreenfootImage[] frames = attackFramesFor(dir);
-        if (frames == null || frames.length == 0)
-        {
-            //fail-safe: if attack frames missing, end attack immediately
-            attacking = false;
-            attackCooldown = attackCooldownMax;
-            setImage(framesFor(dir)[0]);
-            return;
-        }
-
-        //trigger hit exactly once at hitFrame
-        int safeHitFrame = Math.min(hitFrame, frames.length - 1);
-        if (!hitDone && atkFrameIndex == safeHitFrame)
-        {
-            hitDone = true;
-            onAttackHit();
-        }
-
-        //animate one-shot
-        atkAnimTick++;
-        if (atkAnimTick < atkAnimDelay)
-        {
-            setImage(frames[atkFrameIndex]);
-            return;
-        }
-
-        atkAnimTick = 0;
-        atkFrameIndex++;
-
-        //end attack when finished
-        if (atkFrameIndex >= frames.length)
-        {
-            attacking = false;
-            attackCooldown = attackCooldownMax;
-            resetAnim();
-            setImage(framesFor(dir)[0]);
-            return;
-        }
-
-        setImage(frames[atkFrameIndex]);
-    }
-
-    /**
-     * Select correct attack frames based on direction.
-     */
-    protected GreenfootImage[] attackFramesFor(int direction)
-    {
-        if (direction == UP) return atkUp;
-        if (direction == DOWN) return atkDown;
-        if (direction == LEFT) return atkLeft;
-        return atkRight;
-    }
     /**
      * @return the player's current health
      */

@@ -51,16 +51,66 @@ public abstract class WalkingActor extends SuperSmoothMover
         int dx = 0;
         int dy = 0;
 
-        //arrows or wsad
-        boolean leftKey  = Greenfoot.isKeyDown("left")  || Greenfoot.isKeyDown("a");
-        boolean rightKey = Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d");
-        boolean upKey    = Greenfoot.isKeyDown("up")    || Greenfoot.isKeyDown("w");
-        boolean downKey  = Greenfoot.isKeyDown("down")  || Greenfoot.isKeyDown("s");
+        //arrows or WASD
+        boolean leftKey;
+        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a"))
+        {
+            leftKey = true;
+        }
+        else
+        {
+            leftKey = false;
+        }
+        
+        boolean rightKey;
+        if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d"))
+        {
+            rightKey = true;
+        }
+        else
+        {
+            rightKey = false;
+        }
+        
+        boolean upKey;
+        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w"))
+        {
+            upKey = true;
+        }
+        else
+        {
+            upKey = false;
+        }
+        
+        boolean downKey;
+        if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s"))
+        {
+            downKey = true;
+        }
+        else
+        {
+            downKey = false;
+        }
 
-        if (leftKey)  dx -= speed;
-        if (rightKey) dx += speed;
-        if (upKey)    dy -= speed;
-        if (downKey)  dy += speed;
+        if (leftKey)
+        {
+            dx -= speed;
+        }
+        
+        if (rightKey)
+        {
+            dx += speed;
+        }
+        
+        if (upKey)
+        {
+            dy -= speed;
+        }
+        
+        if (downKey)
+        {
+            dy += speed;
+        }
 
         boolean moving = false;
         if(dx != 0 || dy != 0)
@@ -68,12 +118,24 @@ public abstract class WalkingActor extends SuperSmoothMover
             moving=true;
         }
         
-        //Update direction 
+        //update direction 
         int newDir = dir;
-        if (dx < 0) newDir = LEFT;
-        else if (dx > 0) newDir = RIGHT;
-        else if (dy < 0) newDir = UP;
-        else if (dy > 0) newDir = DOWN;
+        if (dx < 0)
+        {
+            newDir = LEFT;
+        }
+        else if (dx > 0)
+        {
+            newDir = RIGHT;
+        }
+        else if (dy < 0)
+        {
+            newDir = UP;
+        }
+        else if (dy > 0)
+        {
+            newDir = DOWN;
+        }
 
         if (newDir != dir) 
         {
@@ -180,7 +242,8 @@ public abstract class WalkingActor extends SuperSmoothMover
         } 
         catch (IllegalArgumentException e) 
         {
-            System.out.println("Something went wrong while tyring to load the file:"+e.getMessage());
+            System.out.println("Failed toload the file:"+e.getMessage());
+            System.out.println("PlacerHolder Images will be used instead");
         }
     
         //image found

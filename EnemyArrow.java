@@ -16,38 +16,35 @@ public class EnemyArrow extends Bullet
     {
         super(dirX, dirY);
 
-        speed=1;
-        //replace the default circle image with an arrow sprite
-        //change this path to your real arrow image
-        setImage(new GreenfootImage("enemy/skeleton/arrow.png"));
-        
-        GreenfootImage img = getImage();
+        speed=2;
 
         // arrow sprite points LEFT by default
         if (dirX == 1)
         {
-            img.mirrorHorizontally(); // RIGHT
-            img.scale(45, 10);
+            //RIGHT
+            setImage(new GreenfootImage("enemy/skeleton/arrow.png"));
+            getImage().mirrorHorizontally(); 
+            getImage().scale(45, 20);
         }
         else if (dirX == -1)
         {
             //LEFT
-            img.scale(45, 10);
+            setImage(new GreenfootImage("enemy/skeleton/arrow.png"));
+            getImage().scale(45, 20);
         }
         else if (dirY == -1)
         {
             //UP
-            img.rotate(90);
-            img.scale(10, 45);
+            setImage(new GreenfootImage("enemy/skeleton/arrow_up.png"));
+            getImage().scale(20, 45);  
         }
         else if (dirY == 1)
         {
             //DOWN
-            img.rotate(270);
-            img.scale(10, 45);
-        }
-
-        setImage(img);
+            setImage(new GreenfootImage("enemy/skeleton/arrow_down.png"));
+            getImage().scale(20, 45);  
+        }  
+  
     }
 
     /**
